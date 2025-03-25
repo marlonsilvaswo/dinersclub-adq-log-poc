@@ -84,7 +84,7 @@ ENV LANGUAGE='en_US:en'
 
 
 COPY target/* /deployments/
-COPY target/*-runner.jar /deployments/quarkus-run.jar
+COPY target/*quarkus-run.jar /deployments/quarkus-run.jar
 
 EXPOSE 8080
 USER 185
