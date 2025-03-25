@@ -82,21 +82,11 @@ FROM registry.access.redhat.com/ubi9/openjdk-21:1.21
 
 ENV LANGUAGE='en_US:en'
 
-CMD [ "sh", "-c", "ls -la" ]
-
 COPY target/* /deployments/
-
-CMD [ "sh", "-c", "ls -la" ]
-
-COPY /var/lib/jenkins/workspace/pipe-diners-adq-log-poc/target/quarkus-run.jar /deployments/quarkus-run.jar
-
-CMD [ "sh", "-c", "ls -la" ]
-
-##ls -la /var/lib/jenkins/workspace/pipe-diners-adq-log-poc/target/
 
 EXPOSE 8080
 USER 185
 ENV JAVA_OPTS_APPEND="-Dquarkus.http.host=0.0.0.0 -Djava.util.logging.manager=org.jboss.logmanager.LogManager"
-ENV JAVA_APP_JAR="/deployments/quarkus-run.jar"
+ENV JAVA_APP_JAR="quarkus-run.jar"
 
 ENTRYPOINT [ "/opt/jboss/container/java/run/run-java.sh" ]
