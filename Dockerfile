@@ -82,9 +82,17 @@ FROM registry.access.redhat.com/ubi9/openjdk-21:1.21
 
 ENV LANGUAGE='en_US:en'
 
+CMD [ "sh", "-c", "ls -la" ]
 
 COPY target/* /deployments/
-COPY target/*quarkus-run.jar /deployments/quarkus-run.jar
+
+CMD [ "sh", "-c", "ls -la" ]
+
+COPY /var/lib/jenkins/workspace/pipe-diners-adq-log-poc/target/quarkus-run.jar /deployments/quarkus-run.jar
+
+CMD [ "sh", "-c", "ls -la" ]
+
+##ls -la /var/lib/jenkins/workspace/pipe-diners-adq-log-poc/target/
 
 EXPOSE 8080
 USER 185
