@@ -1,4 +1,4 @@
-package pe.diners;
+package pe.dinersclub.adqlog;
 
 import jakarta.ws.rs.GET;
 import jakarta.ws.rs.Path;

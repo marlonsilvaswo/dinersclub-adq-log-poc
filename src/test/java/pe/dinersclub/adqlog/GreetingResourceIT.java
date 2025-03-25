@@ -1,4 +1,4 @@
-package pe.diners;
+package pe.dinersclub.adqlog;
 
 import io.quarkus.test.junit.QuarkusIntegrationTest;
 
