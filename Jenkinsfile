@@ -26,26 +26,38 @@ pipeline {
         }
 		
 		stage('Initializing Docker') {
+
             steps {
-                    script {
-					    sh 'docker version'
-						sh 'docker image list'
+                withAWS(credentials: 'aws-key', region: 'us-east-1') {
+                        script {
+                            sh 'aws ecr get-login-password --region us-east-1 | docker login --username AWS --password-stdin 066510737035.dkr.ecr.us-east-1.amazonaws.com'
 
-                        sh 'docker build -t diners-ecr-repo .'
-						sh 'docker tag diners-ecr-repo:latest 066510737035.dkr.ecr.us-east-1.amazonaws.com/diners-ecr-repo:latest'
+                            sh 'docker version'
+						    sh 'docker image list'
 
-                        sh 'docker push 066510737035.dkr.ecr.us-east-1.amazonaws.com/diners-ecr-repo:latest'
-                    }
-                
+                            sh 'docker build -t diners-ecr-repo .'
+						    sh 'docker tag diners-ecr-repo:latest 066510737035.dkr.ecr.us-east-1.amazonaws.com/diners-ecr-repo:latest'
+
+                            sh 'docker push 066510737035.dkr.ecr.us-east-1.amazonaws.com/diners-ecr-repo:latest'
+
+                        } 
+                }
             }
+
         }
 
         stage('Kubernetes Deployment') {
+
+
             steps {
-                    script {
-                        sh 'kubectl apply -f k8s-quarkus-deployment.yml'
-                    }
-                
+                withAWS(credentials: 'aws-key', region: 'us-east-1') {
+                        script {
+                            sh 'aws eks update-kubeconfig --region us-east-1 --name Diners-EKS-Cluster'
+
+                            sh 'kubectl apply -f k8s-quarkus-deployment.yml'
+                    
+                        } 
+                }
             }
         }
 
