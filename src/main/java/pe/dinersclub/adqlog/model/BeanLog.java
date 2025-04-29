@@ -188,5 +188,5 @@ public class BeanLog {
 				+ fechaRegistro + ", horaRegistro=" + horaRegistro + ", aplicacion=" + aplicacion + ", esPadre="
 				+ esPadre + ", solicitudOrigen=" + solicitudOrigen + ", direccionIP=" + direccionIP + "]";
 	}
-
+	
 }

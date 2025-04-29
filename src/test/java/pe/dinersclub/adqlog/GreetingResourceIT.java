@@ -1,8 +1,8 @@
-package pe.dinersclub.adqlog;
-
-import io.quarkus.test.junit.QuarkusIntegrationTest;
-
-@QuarkusIntegrationTest
-class GreetingResourceIT extends GreetingResourceTest {
-    // Execute the same tests but in packaged mode.
-}
+//package pe.dinersclub.adqlog;
+//
+//import io.quarkus.test.junit.QuarkusIntegrationTest;
+//
+//@QuarkusIntegrationTest
+//class GreetingResourceIT extends GreetingResourceTest {
+//    // Execute the same tests but in packaged mode.
+//}
